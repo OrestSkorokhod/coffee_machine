@@ -1,0 +1,24 @@
+{% extends 'coffeemachine/base.html' %}
+
+
+{% block content %}
+{% if error %}
+<div class="alert alert-danger" role="alert">
+{{error}}
+</div>
+{% endif %}
+<h2>У вас на рахунку {{money}} грн</h2>
+<form class="" action="{% url 'add_money_url' %}" method="post">
+  {% csrf_token %}
+
+  <div class="form-group col-md-6">
+    <label for="inputCity">Грн</label>
+    <input type="text" class="form-control" id="inputCity" name='count'>
+  </div>
+
+  <button type="Submit" class="btn btn-primary" name="Create">Поповнити</button>
+</form>
+<div class="mt-3">
+  <a class="btn btn-primary" href="{% url 'index' %}" role="button">До замовлень</a>
+</div>
+{% endblock %}

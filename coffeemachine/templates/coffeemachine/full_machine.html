@@ -1,0 +1,10 @@
+{% extends 'coffeemachine/base.html' %}
+
+
+{% block content %}
+<form class="" action="{% url 'full_machine_url'  %}" method="post">
+  {% csrf_token %}
+
+  <button type="Submit" class="btn btn-primary" name="Create">Заповнити все</button>
+</form>
+{% endblock %}

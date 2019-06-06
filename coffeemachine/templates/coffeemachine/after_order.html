@@ -1,0 +1,25 @@
+{% extends 'coffeemachine/base.html' %}
+
+
+{% block content %}
+<div class="col-6 mt-5">
+<h2>Ваші замовлення:</h2>
+
+{% for order in orders %}
+    Напій:   {{order.drink}} - {{order.drink.price}}грн з інгрідієнтами
+
+
+    {% for ingredient in order.ingredients.get_queryset %}
+      {{ingredient}} - {{ingredient.price}}грн,
+    {% endfor %}
+
+
+
+    <br>
+{% endfor %}
+<h4>З вас {{price}}грн</h4>
+<a class="btn btn-primary" href="{% url 'payment_url' %}" role="button">Оплатити покупку</a>
+<a class="btn btn-primary" href="{% url 'index' %}" role="button">Замовити ще щось</a>
+<a class="btn btn-danger" href="{% url 'clear_order_url' %}" role="button">Очистити замовлення</a>
+</div>
+{% endblock %}

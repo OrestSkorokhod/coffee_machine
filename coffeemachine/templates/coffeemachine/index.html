@@ -1,0 +1,29 @@
+{% extends 'coffeemachine/base.html' %}
+
+
+{% block content %}
+<h2>Кофе Машина</h2>
+<h4>Ви можете замовити  напій із списку доступних:</h4>
+<div class="col-6">
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th scope="col">Напій</th>
+    <th scope="col">Ціна</th>
+
+  </tr>
+</thead>
+{% for drink in drinks %}
+<tbody>
+  <tr>
+    <td>
+      <a class="btn btn-primary" href="{{drink.get_order_url}}" role="button">{{drink.name}}</a>
+      {{drink.drink}}
+    </td>
+    <td>{{drink.price}} грн</td>
+  </tr>
+</tbody>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

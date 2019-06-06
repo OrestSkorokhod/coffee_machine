@@ -1,0 +1,29 @@
+{% extends 'base.html'  %}
+
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+
+
+<form action="" method="post">
+  {% csrf_token %}
+  <!-- as_p для того, чтобы каждый элемент формы был с новой строки -->
+  {{ form.as_p }}
+  <button type="submit">Зарегистрироваться</button>
+</form>
+
+
+{% endblock %}
